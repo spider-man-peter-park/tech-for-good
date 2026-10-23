@@ -1,0 +1,16 @@
+{
+  "name": "ai-starter-class",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "面向非程序员的中文 AI 工具图解短课",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "start": "node scripts/serve.mjs --dist",
+    "build": "node scripts/build.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "test:browser": "node tests/browser.mjs"
+  },
+  "license": "MIT"
+}
