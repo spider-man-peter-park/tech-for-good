@@ -11,6 +11,50 @@
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 @media print{.site-header,.site-footer,.lesson-sidebar,.mobile-toc,.copy-button,.comparison-controls,.lesson-finish,.lesson-pagination,.toast{display:none!important}.page{max-width:none;padding:0}.lesson-layout{display:block}.lesson-section{break-inside:avoid;padding-top:25px}.source-card,.prompt-panel,.result-document,.quiz{box-shadow:none}.prompt-panel{background:white;color:black;border-color:#aaa}.prompt-toolbar{display:none}.prompt-source pre{color:#333}.lesson-title h1{font-size:28px}body{background:white;color:black;font-size:12px}.flow-figure{background:white}.comparison{display:grid;grid-template-columns:1fr 1fr}.compare-card{display:block!important}.check-card{background:white}a[href^="http"]:after{content:" (" attr(href) ")";font-size:8px}}
 /* 教材正文优先可读性，说明文字与按钮也保留足够字号和触控范围。 */
+.header-actions{display:flex;align-items:center;gap:14px;flex-shrink:0}
+.language-switch{display:flex;align-items:center;padding:3px;border:1px solid #cbd5bf;border-radius:7px;background:#f0f3e9;gap:2px}
+.language-switch button{border:0;background:transparent;padding:7px 9px;min-height:36px;border-radius:4px;font-size:11px;color:#6b7c5d}
+.language-switch button.active{background:var(--green);color:var(--white)}
+.header-inner{gap:20px}.header-inner nav{gap:24px}.header-start{gap:14px}
+.hero-copy,.hero-visual,.progress-intro,.path-steps,.lesson-article,.builder-fields{min-width:0}
+.card-arrow{flex-shrink:0;margin-left:10px}.flow-step strong{overflow-wrap:anywhere}
+.metric-grid strong{white-space:normal;overflow-wrap:anywhere}.path-step>span:last-child{max-width:90px}
+html[lang="en"]{--font:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+html[lang="en"] .brand{font-size:19px;letter-spacing:-.5px}
+html[lang="en"] .brand-sub{letter-spacing:1.3px}
+html[lang="en"] .hero h1{font-size:54px;letter-spacing:-1.8px}
+html[lang="en"] .course-card h3{font-size:21px}
+html[lang="en"] .progress-intro{max-width:240px}
+html[lang="en"] .course-meta{gap:12px;flex-wrap:wrap}
+html[lang="en"] .goal-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+html[lang="en"] .lesson-nav a{white-space:normal;line-height:1.5}
+html[lang="en"] .builder-fields label{flex-direction:column;gap:3px}
+html[lang="en"] .builder-fields label>span{padding-top:0}
+@media(max-width:1050px){
+ .header-actions{gap:10px}.header-start{display:none}
+ html[lang="en"] .hero h1{font-size:44px}
+ html[lang="en"] .progress-panel{gap:18px}
+ html[lang="en"] .progress-intro{max-width:200px;padding-right:15px}
+}
+@media(max-width:760px){
+ .header-inner{gap:8px}.header-actions{margin-left:auto}.header-start{display:none}
+ .language-switch button{font-size:10px;min-height:38px;padding:6px 8px}
+ .language-switch{padding:2px}
+ html[lang="en"] .brand{font-size:17px;gap:8px}
+ html[lang="en"] .brand-sub{font-size:8px;letter-spacing:1px}
+ html[lang="en"] .hero h1{font-size:41px;letter-spacing:-1.4px}
+ html[lang="en"] .hero-actions{gap:17px;flex-wrap:wrap}
+ html[lang="en"] .hero-facts{gap:9px 12px}
+ html[lang="en"] .progress-intro{max-width:none;padding-right:0}
+ .path-step{min-width:0;flex:1}.path-step>span:last-child{max-width:70px;line-height:1.4}
+ .header-inner nav{gap:18px;font-size:12px}
+ html[lang="en"] .lesson-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+ html[lang="en"] .lesson-nav a{justify-content:flex-start;font-size:11px;padding:8px}
+ html[lang="en"] .document-toolbar>span{flex-basis:100%}
+ html[lang="en"] .comparison-controls{max-width:100%}
+ html[lang="en"] .comparison-controls button{padding-left:12px;padding-right:12px}
+ .lesson-pagination{flex-wrap:wrap}.lesson-title>.eyebrow{flex-wrap:wrap}
+}
 .lesson-section{scroll-margin-top:18px}
 .source-card pre,.prompt-panel>pre,.compare-output,.followup-card p,.document-content,.template-card pre,.guide-card{font-size:14px}
 .source-card-title,.lesson-section-heading p,.lesson-outcome p,.course-card p,.quiz-option,.quiz-feedback,.check-card ul,.goal-grid p{font-size:13px}

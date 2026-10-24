@@ -10,7 +10,8 @@
     "start": "node scripts/serve.mjs --dist",
     "build": "node scripts/build.mjs",
     "test": "node --test tests/*.test.mjs",
-    "test:browser": "node tests/browser.mjs"
+    "test:browser": "node tests/browser.mjs",
+    "test:browser:i18n": "node tests/browser-i18n.mjs"
   },
   "license": "MIT"
 }

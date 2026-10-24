@@ -11,17 +11,17 @@
     <script type="module" src="./src/app.js"></script>
   </head>
   <body>
-    <a class="skip-link" href="#main">跳到主要内容</a>
+    <a class="skip-link" href="#main" data-i18n="skipLink">跳到主要内容</a>
     <header class="site-header">
       <div class="header-inner">
-        <a class="brand" href="#/" aria-label="AI 上手课首页"><span class="brand-mark" aria-hidden="true">✳</span><span>AI 上手课<span class="brand-sub">让 AI 用得上</span></span></a>
-        <nav aria-label="主导航"><a href="#/" data-nav="home">图解课程</a><a href="#/toolkit" data-nav="toolkit">提示词工具箱</a><a href="#/guide" data-nav="guide">开始前读一读</a></nav>
-        <a class="header-start" href="#/lesson/email">开始学习 <span aria-hidden="true">↗</span></a>
+        <a class="brand" href="#/" aria-label="AI 上手课首页" data-i18n-aria="homeLabel"><span class="brand-mark" aria-hidden="true">✳</span><span><span data-i18n="siteName">AI 上手课</span><span class="brand-sub" data-i18n="tagline">让 AI 用得上</span></span></a>
+        <nav aria-label="主导航" data-i18n-aria="mainNav"><a href="#/" data-nav="home" data-i18n="homeNav">图解课程</a><a href="#/toolkit" data-nav="toolkit" data-i18n="toolkitNav">提示词工具箱</a><a href="#/guide" data-nav="guide" data-i18n="guideNav">开始前读一读</a></nav>
+        <div class="header-actions"><div class="language-switch" role="group" aria-label="选择语言" data-i18n-aria="languageLabel"><button type="button" data-locale="zh" lang="zh-CN" aria-pressed="true">中文</button><button type="button" data-locale="en" lang="en" aria-pressed="false">English</button></div><a class="header-start" href="#/lesson/email"><span data-i18n="start">开始学习</span> <span aria-hidden="true">↗</span></a></div>
       </div>
     </header>
     <main id="main" tabindex="-1"></main>
-    <footer class="site-footer"><div><a class="brand footer-brand" href="#/"><span class="brand-mark" aria-hidden="true">✳</span>AI 上手课</a><p>把 AI 变成帮手，把判断留给自己。</p></div><div class="footer-meta"><span>原创案例 · 开源共建 · 无需登录</span><a href="#/guide">使用说明与隐私</a><span>为每一个愿意开始的人而做。</span></div></footer>
+    <footer class="site-footer"><div><a class="brand footer-brand" href="#/"><span class="brand-mark" aria-hidden="true">✳</span><span data-i18n="siteName">AI 上手课</span></a><p data-i18n="footerLine">把 AI 变成帮手，把判断留给自己。</p></div><div class="footer-meta"><span data-i18n="footerFeatures">原创案例 · 开源共建 · 无需登录</span><a href="#/guide" data-i18n="privacyLink">使用说明与隐私</a><span data-i18n="footerCredit">为每一个愿意开始的人而做。</span></div></footer>
     <div id="toast" role="status" aria-live="polite" class="toast" hidden></div>
-    <noscript><div class="noscript">此站使用少量 JavaScript 展示课程与本地学习进度。请启用 JavaScript；也可在源代码 src/content.js 中阅读完整内容。</div></noscript>
+    <noscript><div class="noscript">请启用 JavaScript 以浏览课程和切换语言；完整教材也可见 src/content.js 与 src/content-en.js。<br>Enable JavaScript to browse lessons and switch languages. Full lesson content is also in src/content.js and src/content-en.js.</div></noscript>
   </body>
 </html>

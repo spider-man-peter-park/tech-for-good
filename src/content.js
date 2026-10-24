@@ -168,12 +168,12 @@ export const lessons = [
 ];
 
 export function fullPrompt(lesson) { return `${lesson.prompt}\n${lesson.source}`; }
-export function finalText(lesson) {
+export function finalText(lesson, locale = 'zh') {
   return [lesson.final.title, ...lesson.final.blocks.map(block => {
     if (block.type === 'table') return [block.headers.join(' | '), ...block.rows.map(row => row.join(' | '))].join('\n');
-    if (block.type === 'metrics') return block.items.map(item => `${item.value}（${item.label}）`).join('\n');
+    if (block.type === 'metrics') return block.items.map(item => locale === 'en' ? `${item.value} (${item.label})` : `${item.value}（${item.label}）`).join('\n');
     if (block.type === 'list') return block.items.map(item => `• ${item}`).join('\n');
-    if (block.type === 'meta') return `${block.label}：${block.text}`;
+    if (block.type === 'meta') return `${block.label}${locale === 'en' ? ': ' : '：'}${block.text}`;
     return block.text;
   })].join('\n\n');
 }

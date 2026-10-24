@@ -74,3 +74,23 @@ BROWSER_EXECUTABLE=/usr/bin/chromium npm run test:browser
 - 对拟发布的源码、文档、SVG 与配置进行了敏感模式检查，未发现密钥、私人邮箱、手机号或带凭证 URL。案例均为原创虚构教学内容。
 - 曾尝试验证自包含离线 HTML，但云端 Chromium 对 `file:///workspace/tech-for-good/dist/offline.html` 导航返回 `ERR_BLOCKED_BY_ADMINISTRATOR`。未调整策略或重试该操作，离线试验已撤回，不将未经完整验证的双击版纳入交付；仍按 README 用 HTTP 服务启动。
 - 环境中 `gh api repos/spider-man-peter-park/tech-for-good` 返回 `Forbidden`；已连接 GitHub 工具可读仓库且显示管理员权限，但不提供可见性和 Pages 设置动作。后续这些设置是否执行成功，需以实际工具返回状态为准，不能用本地兼容性结果替代。
+
+## 2026-10-24 · 中英文切换
+
+新增页头中文 / English 控件、完整四课英文教材与英文 SVG、界面成对词条、英文模板导出和语言偏好。默认中文，链接 `?lang=en` 或 `?lang=zh` 优先于已保存偏好。没有改变旧进度的数据格式或课程 ID；中英文共用完成状态及练习答案。
+
+本次结果：`npm test` 10 项通过，`npm run build` 通过。英文与中文各自运行同一套 11 组浏览器检查，另有 7 组语言切换检查，均通过。最终完整回归在模拟 Pages 的 `/tech-for-good/` 子路径上进行；覆盖 1440 像素桌面与 360 / 390 / 768 像素布局。Chromium 154.0.8037.57，测试使用现有 Playwright 1.57.0，没有新增运行依赖。
+
+新增检查包括：
+
+1. 所有页面、标题、元描述、HTML `lang`、图解和无障碍标签随语言切换，英文正文没有中文残留。
+2. 重复点击语言按钮不会重复渲染，焦点留在所选按钮；刷新恢复语言。
+3. 切换保留当前课程与步骤、旧版完成进度、练习答案、展开的素材和对比视图。
+4. 任务卡保留用户输入，复制和 TXT 模板下载使用当前语言；不把输入写入存储。
+5. 显式链接、偏好和默认语言的优先级正确；未知或异常参数安全回退。
+6. 浏览器前进后退按照历史链接的语言展示，不改写最后主动选择的偏好。
+7. 清除进度保留语言；存储和剪贴板均禁用时，仍可用 URL 切换语言并手动复制完整英文内容。
+
+最终机器证据分别为 `artifacts/bilingual-pages-zh/browser-results.json`、`artifacts/bilingual-pages-en/browser-results.json` 和 `artifacts/bilingual-pages-switch/browser-i18n-results.json`，共 29 组通过；捕获的页面 JS 异常为 0，两种语言各自测试的自动外部请求均为 0。桌面和手机英文截图已经人工检查。构建包含中文 `templates/*.txt` 及英文 `templates/en/*.txt`，原中文链接保持有效。
+
+仓库查询当前返回 `public`。对实际 Pages 域名的读取在此环境被网络代理以 HTTP 403 阻止，因此此处只确认本地构建及 Pages 子路径测试，不把外网部署状态说成已验证。未尝试绕过代理限制；语言更新沿用现有 Pages 工作流。

@@ -2,7 +2,7 @@
 
 ## AI 上手课
 
-**面向会用浏览器、不会编程的人的中文 AI 图解短课。** 从一封邮件、一份纪要开始，学会给素材、说需求、追问改进和核对结果。无需登录、API 密钥或后端 AI 服务。
+**面向会用浏览器、不会编程的人的中英文 AI 图解短课。** 从一封邮件、一份纪要开始，学会给素材、说需求、追问改进和核对结果。无需登录、API 密钥或后端 AI 服务。
 
 这是可运行的项目初版。教材、SVG / CSS 图解、提示词和输出示例均为本项目原创。所有案例、角色、活动和数据为虚构，不使用个人或公司信息；对话图明确标为教学示意，不是产品截图。代码与教材统一使用 [MIT 许可证](LICENSE)。
 
@@ -16,6 +16,18 @@
 | 做一页清楚的汇报 | 15 分钟 | 可粘贴到文档或幻灯片的汇报内容 | 数字保留分母，建议保留状态 |
 
 每课包含八步：虚构原始素材 → 核心图解 → 完整提示词 → 初稿与改进对比 → 三种追问 → 最终成果 → 即时反馈小练习 → 事实核查与隐私提醒。示例输出为人工编写；在实际 AI 工具中得到的回答会不同。
+
+### 中文 / English
+
+页头的 **中文 / English** 按钮可随时切换。两种语言均包含完整的四节课程、虚构素材、图解、提示词、追问、成品、练习、核查和隐私说明；英文提示词明确要求英文输出，并保留原案例的事实、人民币金额和不确定性。
+
+- 默认显示中文；选择语言后在当前浏览器保存偏好。优先级为链接中的有效 `lang` 参数 → 保存的偏好 → 中文。
+- 分享英文课程可使用 `?lang=en#/lesson/email`；中文使用 `?lang=zh#/lesson/email`。参数放在 `#` 前，部署在 `/tech-for-good/` 子路径时同样适用。
+- 切换时保留当前课程、步骤、练习答案、完成进度、对比视图和已经输入的任务卡文字。刷新或前进后退也会识别链接语言。两种语言共用原有进度，不用重复学完。
+- 复制、提示词模板和 TXT 下载跟随当前语言。构建输出保留原有 `templates/*.txt` 中文文件，并新增 `templates/en/*.txt` 英文文件。
+- 浏览器禁用存储时仍可切换，URL 保留语言，复制不可用时提供手动复制。清除学习进度保留语言选择；任务卡文字不写入存储。
+
+**English quick start:** Use **English** in the header, or open `?lang=en#/`. All four lessons, source materials, prompts, examples, practice and downloads are available in English. Both languages share learning progress. To run locally with Node.js 20+, use `npm run dev`; no dependency installation or API key is required.
 
 ### 如何运行
 
@@ -43,7 +55,7 @@ npm run build
 npm start
 ```
 
-`dist/` 是完整静态站点，包含 HTML、CSS、JS、SVG 与四份 TXT 模板。`npm start` 只服务 `dist/`。开发服务器只暴露前端目录，不暴露 Git、环境文件、测试或文档。
+`dist/` 是完整静态站点，包含 HTML、CSS、JS、SVG 与中英文各四份 TXT 模板。`npm start` 只服务 `dist/`。开发服务器只暴露前端目录，不暴露 Git、环境文件、测试或文档。
 
 站内使用 hash 路由：`#/lesson/email`、`#/lesson/meeting`、`#/lesson/reading`、`#/lesson/report`、`#/toolkit`、`#/guide`。静态托管不需要服务端路由回退，资源使用相对路径，支持部署在子目录。已在 `/tech-for-good/` 子路径运行全部 11 组浏览器检查，资源、四课路由、刷新、复制、模板下载及手机布局均通过。
 
@@ -81,6 +93,13 @@ npx playwright install chromium
 npm run test:browser
 ```
 
+默认测试中文；英文和来回切换另运行：
+
+```bash
+TEST_LOCALE=en npm run test:browser
+npm run test:browser:i18n
+```
+
 如环境已有模块和浏览器，可直接复用，避免安装：
 
 ```bash
@@ -98,6 +117,8 @@ index.html                页面入口、全站导航
 styles.css                响应式视觉与打印样式
 assets/                   原创 SVG 图解与图标
 src/content.js            四课完整内容与模板（主要编辑入口）
+src/content-en.js         对应的四课完整英文教材
+src/i18n.js               成对的界面词条、语言解析与偏好
 src/app.js                页面渲染、导航、复制与练习交互
 src/state.js              本地进度校验、读写及故障处理
 scripts/build.mjs         零依赖静态构建与 TXT 模板导出
@@ -112,7 +133,7 @@ CONTRIBUTING.md           共建说明
 
 ### 隐私、来源与边界
 
-本站没有分析统计、广告、外部字体、AI 接口或上传功能。仅在 `localStorage` 的 `ai-starter-class.progress.v1` 键保存课程 ID、已完成状态和练习选项。不保存任务卡输入；没有跨设备同步。主机可能保留常规 HTTP 访问日志；点击外部参考链接或到其他 AI 工具使用提示词后，适用对方的数据规则。
+本站没有分析统计、广告、外部字体、AI 接口或上传功能。在 `localStorage` 的 `ai-starter-class.progress.v1` 键保存课程 ID、已完成状态和练习选项，在 `ai-starter-class.locale.v1` 键保存语言偏好 `zh` 或 `en`。不保存任务卡输入；没有跨设备同步。主机可能保留常规 HTTP 访问日志；点击外部参考链接或到其他 AI 工具使用提示词后，适用对方的数据规则。
 
 核查及隐私方法参考 [NIST AI 600-1（2024 年 7 月）](https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf) 的 §2.2 Confabulation、§2.4 Data Privacy，已于 2026-10-23 核对。课程中的“背景 / 任务 / 格式 / 边界”是本项目的教学组织方式，不是产品官方标准，也不保证任何工具会完全遵循提示词。
 
